@@ -15,7 +15,7 @@ public class moveObject : MonoBehaviour {
     Vector3 moveVec;
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(updateCoroutine());
+        //StartCoroutine(updateCoroutine());
 	}
 	
 	// Update is called once per frame
@@ -47,7 +47,7 @@ public class moveObject : MonoBehaviour {
         Debug.DrawRay(transform.position + moveVec + Vector3.back, Vector3.forward * 10.0f, Color.red);
 	}
 
-    void work()
+    public void work()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + moveVec + Vector3.back,Vector3.forward * 10.0f, out hit))
