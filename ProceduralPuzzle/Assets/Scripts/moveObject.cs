@@ -13,9 +13,11 @@ public class moveObject : MonoBehaviour {
 
     public MOVE_DIR moveDir;
     Vector3 moveVec;
+    string dirSprite;
+
 	// Use this for initialization
 	void Start () {
-        //StartCoroutine(updateCoroutine());
+        StartCoroutine(updateCoroutine());
 	}
 	
 	// Update is called once per frame
@@ -45,6 +47,9 @@ public class moveObject : MonoBehaviour {
         }
 
         Debug.DrawRay(transform.position + moveVec + Vector3.back, Vector3.forward * 10.0f, Color.red);
+
+
+
 	}
 
     public void work()
@@ -66,4 +71,44 @@ public class moveObject : MonoBehaviour {
             work();
         }
     }
+
+	private void OnTriggerEnter(Collider other)
+	{
+        
+
+		if(other.tag == "Change")
+        {
+            dirSprite = other.GetComponent<SpriteRenderer>().sprite.name;
+
+            Debug.Log(dirSprite);
+
+            changeDir();
+        }
+	}
+
+
+	void changeDir()
+    {
+        switch(dirSprite)
+        {
+            case "SetDirection_0":
+                moveDir = MOVE_DIR.right;
+                break;
+
+            case "SetDirection_1":
+                moveDir = MOVE_DIR.left;
+                break;
+
+            case "SetDirection_2":
+                moveDir = MOVE_DIR.forward;
+                break;
+
+            case "SetDirection_3":
+                moveDir = MOVE_DIR.backward;
+                break;
+        }
+    }
+
+
+
 }
