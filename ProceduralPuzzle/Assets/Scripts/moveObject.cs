@@ -24,12 +24,12 @@ public class moveObject : MonoBehaviour {
         switch (moveDir)
         {
             case MOVE_DIR.right:
-                transform.eulerAngles = new Vector3(0, 90, 0);
+                transform.eulerAngles = new Vector3(0, 0, 270);
                 moveVec = Vector3.right;
                 break;
 
             case MOVE_DIR.left:
-                transform.eulerAngles = new Vector3(0, 270, 0);
+                transform.eulerAngles = new Vector3(0, 0, 90);
                 moveVec = Vector3.left;
                 break;
 
@@ -39,7 +39,7 @@ public class moveObject : MonoBehaviour {
                 break;
 
             case MOVE_DIR.backward:
-                transform.eulerAngles = new Vector3(0, 360, 0);
+                transform.eulerAngles = new Vector3(0, 0, 180);
                 moveVec = Vector3.down;
             break;
         }
