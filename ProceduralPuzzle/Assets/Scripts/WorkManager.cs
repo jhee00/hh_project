@@ -16,7 +16,7 @@ public class WorkManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(runObjectsCoroutine()); 
+        StartCoroutine(RunObjectsCoroutine()); 
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class WorkManager : MonoBehaviour {
 		
 	}
 
-    IEnumerator runObjectsCoroutine()
+    IEnumerator RunObjectsCoroutine()
     {
         bool needToWork = true;
         while(needToWork)
@@ -32,7 +32,7 @@ public class WorkManager : MonoBehaviour {
 
             for (int i = 0; i < moveObjectList.Count; i++)
             {
-                moveObjectList[i].work();
+                moveObjectList[i].Work();
             }
 
             yield return new WaitForSeconds(3.0f);

@@ -9,6 +9,7 @@ public enum MOVE_DIR{
     backward
 }
 
+
 public class moveObject : MonoBehaviour {
 
     public MOVE_DIR moveDir;
@@ -17,13 +18,26 @@ public class moveObject : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(updateCoroutine());
+
+        ChangeDir(moveDir);
+        StartCoroutine(UpdateCoroutine());
 	}
 	
 	// Update is called once per frame
 	void Update () {
         
-        switch (moveDir)
+
+
+        Debug.DrawRay(transform.position + moveVec + Vector3.back, Vector3.forward * 10.0f, Color.red);
+
+
+
+	}
+
+    public void ChangeDir(MOVE_DIR newMoveDir)
+    {
+
+        switch (newMoveDir)
         {
             case MOVE_DIR.right:
                 transform.eulerAngles = new Vector3(0, 0, 270);
@@ -43,16 +57,12 @@ public class moveObject : MonoBehaviour {
             case MOVE_DIR.backward:
                 transform.eulerAngles = new Vector3(0, 0, 180);
                 moveVec = Vector3.down;
-            break;
+                break;
         }
 
-        Debug.DrawRay(transform.position + moveVec + Vector3.back, Vector3.forward * 10.0f, Color.red);
 
-
-
-	}
-
-    public void work()
+    }
+    public void Work()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + moveVec + Vector3.back,Vector3.forward * 10.0f, out hit))
@@ -62,53 +72,18 @@ public class moveObject : MonoBehaviour {
         }
     }
 
-    IEnumerator updateCoroutine()
+    IEnumerator UpdateCoroutine()
     {
         while(true)
         {
             yield return new WaitForSeconds(2.0f);
 
-            work();
+            Work();
         }
     }
 
-	private void OnTriggerEnter(Collider other)
-	{
-        
-
-		if(other.tag == "Change")
-        {
-            dirSprite = other.GetComponent<SpriteRenderer>().sprite.name;
-
-            Debug.Log(dirSprite);
-
-            changeDir();
-        }
-	}
-
-
-	void changeDir()
-    {
-        switch(dirSprite)
-        {
-            case "SetDirection_0":
-                moveDir = MOVE_DIR.right;
-                break;
-
-            case "SetDirection_1":
-                moveDir = MOVE_DIR.left;
-                break;
-
-            case "SetDirection_2":
-                moveDir = MOVE_DIR.forward;
-                break;
-
-            case "SetDirection_3":
-                moveDir = MOVE_DIR.backward;
-                break;
-        }
-    }
-
+	
+  
 
 
 }
