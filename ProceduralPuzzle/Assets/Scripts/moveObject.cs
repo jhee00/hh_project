@@ -20,18 +20,12 @@ public class moveObject : MonoBehaviour {
 	void Start () {
 
         ChangeDir(moveDir);
-        StartCoroutine(UpdateCoroutine());
+        //StartCoroutine(UpdateCoroutine());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
-
-
         Debug.DrawRay(transform.position + moveVec + Vector3.back, Vector3.forward * 10.0f, Color.red);
-
-
-
 	}
 
     public void ChangeDir(MOVE_DIR newMoveDir)
@@ -59,31 +53,14 @@ public class moveObject : MonoBehaviour {
                 moveVec = Vector3.down;
                 break;
         }
-
-
+        Debug.Log(moveVec);
     }
     public void Work()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position + moveVec + Vector3.back,Vector3.forward * 10.0f, out hit))
         {
-            Debug.Log(hit.transform.name);
-            transform.position = hit.transform.position;
+            transform.Translate(Vector3.up);
         }
     }
-
-    IEnumerator UpdateCoroutine()
-    {
-        while(true)
-        {
-            yield return new WaitForSeconds(2.0f);
-
-            Work();
-        }
-    }
-
-	
-  
-
-
 }

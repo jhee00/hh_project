@@ -11,8 +11,10 @@ using UnityEngine;
 // step 1 의 단점을 수정하기 위해 map 혹은 dictionary에 담아서 enum만 추가하면 되도록 관리
 
 public class WorkManager : MonoBehaviour {
-    
+
+    public bool pause;
     public List<moveObject> moveObjectList;
+    public List<DirectionChanger> dirChangerList;
 
 	// Use this for initialization
 	void Start () {
@@ -26,16 +28,29 @@ public class WorkManager : MonoBehaviour {
 
     IEnumerator RunObjectsCoroutine()
     {
-        bool needToWork = true;
-        while(needToWork)
+        int tick = 0;
+        while(true)
         {
+            yield return new WaitForSeconds(0.1f);
 
-            for (int i = 0; i < moveObjectList.Count; i++)
+            if(!pause) tick++;
+
+            if(tick >= 5)
             {
-                moveObjectList[i].Work();
-            }
+                tick = 0;
 
-            yield return new WaitForSeconds(3.0f);
+                for (int i = 0; i < moveObjectList.Count; i++)
+                {
+                    moveObjectList[i].Work();
+                    //moveObjectList[i].SendMessage("Work");
+                }
+
+                for (int i = 0; i < dirChangerList.Count; i++)
+                {
+                    dirChangerList[i].Work();
+                }
+
+            }
         }
 
         yield return null;
