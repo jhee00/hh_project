@@ -2,20 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum MOVE_DIR{
-    right = 0,
-    left,
-    forward,
-    backward
-}
-
 
 public class moveObject : MonoBehaviour {
 
     public MOVE_DIR moveDir;
     Vector3 moveVec;
-    string dirSprite;
-
+    public Texture2D imgTexture; // 사용할 이미지 텍스쳐
 	// Use this for initialization
 	void Start () {
 
@@ -30,9 +22,12 @@ public class moveObject : MonoBehaviour {
 
     public void ChangeDir(MOVE_DIR newMoveDir)
     {
+        Sprite spr = Sprite.Create(imgTexture, new Rect(128 * (int)moveDir, 0, 128, 128), new Vector2(0.5f, 0.5f), 128);
+        GetComponent<SpriteRenderer>().sprite = spr;
 
         switch (newMoveDir)
         {
+            
             case MOVE_DIR.right:
                 transform.eulerAngles = new Vector3(0, 0, 270);
                 moveVec = Vector3.right;
