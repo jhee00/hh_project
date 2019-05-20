@@ -39,20 +39,20 @@ public class WorkManager : MonoBehaviour {
             {
                 tick = 0;
 
+                for (int i = 0; i < dirChangerList.Count; i++)
+                {
+                    //Debug.Log("dirChanger" + i + " Works");
+                    dirChangerList[i].Work();
+                }
+
                 for (int i = 0; i < moveObjectList.Count; i++)
                 {
+                    //Debug.Log("moveObject" + i + " Works");
                     moveObjectList[i].Work();
                     //moveObjectList[i].SendMessage("Work");
                 }
 
-                for (int i = 0; i < dirChangerList.Count; i++)
-                {
-                    dirChangerList[i].Work();
-                }
-
             }
         }
-
-        yield return null;
     }
 }

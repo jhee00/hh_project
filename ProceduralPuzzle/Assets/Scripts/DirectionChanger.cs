@@ -10,10 +10,8 @@ public enum MOVE_DIR
     backward
 }
 
-
 public class DirectionChanger : MonoBehaviour
 {
-
     GameObject targetObj; // 이동시킬 타겟 
 
     public Texture2D imgTexture; // 사용할 이미지 텍스쳐
@@ -41,15 +39,26 @@ public class DirectionChanger : MonoBehaviour
     {
         if (other.tag == "MoveObject")
         {
+            Debug.Log("in");
             targetObj = other.gameObject;
         }
     }
 
-    public void ChangeDir()
+	private void OnTriggerExit(Collider other)
+	{
+        if (other.tag == "MoveObject")
+        {
+            Debug.Log("out");
+            targetObj = null;
+        }
+	}
+
+	public void ChangeDir()
     {
         // 타겟 오브젝트가 없으면 행동 X
-        if (!targetObj) return; 
+        if (!targetObj) return;
 
+        Debug.Log(moveDir);
         targetObj.GetComponent<moveObject>().ChangeDir(moveDir);
     }
 
@@ -57,4 +66,5 @@ public class DirectionChanger : MonoBehaviour
     {
         ChangeDir();
     }
+
 }

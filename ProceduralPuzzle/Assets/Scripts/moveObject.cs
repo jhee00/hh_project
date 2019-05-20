@@ -23,7 +23,7 @@ public class moveObject : MonoBehaviour {
     public void ChangeDir(MOVE_DIR newMoveDir)
     {
         Sprite spr = Sprite.Create(imgTexture, new Rect(128 * (int)moveDir, 0, 128, 128), new Vector2(0.5f, 0.5f), 128);
-        GetComponent<SpriteRenderer>().sprite = spr;
+        //GetComponent<SpriteRenderer>().sprite = spr;
 
         switch (newMoveDir)
         {
@@ -48,7 +48,6 @@ public class moveObject : MonoBehaviour {
                 moveVec = Vector3.down;
                 break;
         }
-        Debug.Log(moveVec);
     }
     public void Work()
     {
