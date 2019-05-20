@@ -39,7 +39,6 @@ public class DirectionChanger : MonoBehaviour
     {
         if (other.tag == "MoveObject")
         {
-            Debug.Log("in");
             targetObj = other.gameObject;
         }
     }
@@ -48,7 +47,6 @@ public class DirectionChanger : MonoBehaviour
 	{
         if (other.tag == "MoveObject")
         {
-            Debug.Log("out");
             targetObj = null;
         }
 	}
