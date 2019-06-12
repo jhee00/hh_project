@@ -51,12 +51,19 @@ public class moveObject : MonoBehaviour {
     }
     public void Work()
     {
-        LayerMask mask = LayerMask.GetMask("MovableTile");
+        // MovableTile Layer에 속한 애들만 찾아서 동작하도록 변경 
+
+        //string[] layerNames = new string[] { "MovableTile", "Obstacle"};
+        //LayerMask mask = LayerMask.GetMask("MovableTile");
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position + moveVec + Vector3.back, Vector3.forward, out hit, 10.0f, mask))
+        if (Physics.Raycast(transform.position + moveVec + Vector3.back, Vector3.forward, out hit, 10.0f))
         {
-            transform.Translate(Vector3.up);
+            Debug.Log(hit.collider.gameObject.name);
+            if(hit.collider.gameObject.layer == LayerMask.NameToLayer("MovableTile"))
+            {
+                transform.Translate(Vector3.up);
+            }
         }
     }
 }

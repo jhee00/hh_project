@@ -56,7 +56,7 @@ public class DirectionChanger : MonoBehaviour
         // 타겟 오브젝트가 없으면 행동 X
         if (!targetObj) return;
 
-        Debug.Log(moveDir);
+        //Debug.Log(moveDir);
         targetObj.GetComponent<moveObject>().ChangeDir(moveDir);
     }
 
