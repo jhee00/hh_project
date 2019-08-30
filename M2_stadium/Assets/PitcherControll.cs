@@ -22,16 +22,4 @@ public class PitcherControll : MonoBehaviour {
     {
         aniCtrl.SetTrigger("pitchingTrigger");
     }
-
-    void Pitched(AnimationEvent animationEvent)
-    {
-        AnimationManager.instance.Pitched(animationEvent);
-        //BaseballControll.instance.Pitched(animationEvent);
-    }
-
-    void HitterSwing(AnimationEvent animationEvent)
-    {
-        AnimationManager.instance.HitterSwing(animationEvent);
-    }
-
 }

@@ -1,0 +1,25 @@
+M2_stadium/Assembly-CSharp-Editor-vs.csproj
+M2_stadium/Assembly-CSharp-Editor.csproj
+M2_stadium/Assembly-CSharp-vs.csproj
+M2_stadium/Assembly-CSharp.csproj
+M2_stadium/unity_project-csharp.sln
+M2_stadium/unity_project.sln
+M2_stadium/Assembly-CSharp-firstpass-vs.csproj
+M2_stadium/Assembly-CSharp-firstpass.csproj
+
+Space/Assembly-CSharp-Editor-vs.csproj
+Space/Assembly-CSharp-Editor.csproj
+Space/Assembly-CSharp-vs.csproj
+Space/Assembly-CSharp.csproj
+Space/sample_project-csharp.sln
+Space/sample_project.sln
+Space/sample_project.userprefs
+
+# UNITY #
+M2_stadium/Library
+M2_stadium/obj
+M2_stadium/Temp
+
+Space/Library
+Space/obj
+Space/Temp

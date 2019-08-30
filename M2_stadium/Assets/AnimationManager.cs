@@ -16,11 +16,21 @@ using UnityEngine;
 
 public class AnimationManager : MonoBehaviour {
 
+    public enum DefendPosition : int {
+        catcher = 0,
+        b1,
+        b2,
+        b3,
+        pitcher,
+        ss,
+        lf,
+        cf,
+        rf
+    }
     public static AnimationManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.
 
     public List<GameObject> hitters;
     public GameObject catcher;
-
    
     public GameObject[] defenders;
 
@@ -55,10 +65,10 @@ public class AnimationManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        Init();
+        //Init();
 	}
 
-    void Init()
+    public void Init()
     {
         curSendPathsIdx = 0;
 
@@ -87,33 +97,32 @@ public class AnimationManager : MonoBehaviour {
         }
     }
 
-    public void Pitched(AnimationEvent animationEvent)
+    public void Pitching()
+    {
+        defenders[(int)DefendPosition.pitcher].GetComponent<PitcherControll>().Pitching();
+    }
+
+    public void Pitched()
     {
         //isCatcherPath = Random.Range(0f, 1f) < 0.5f;
 
-        animationEvent.intParameter = isHitted ? 1 : 0;
-        Debug.Log("AnimationManager Pitched() = " + animationEvent.intParameter);
         //players.SendMessage("Pitched", animationEvent);
-        BaseballControll.instance.Pitched(animationEvent);
+        BaseballControll.instance.Pitched(isHitted);
     }
 
-    public void HitterSwing(AnimationEvent animationEvent)
+    public void HitterSwing()
     {
-        isHitted = Random.Range(0f, 1f) < 0.5f;
+        isHitted = Random.Range(0f, 1f) < 0.9f;
 
-        animationEvent.intParameter = isHitted ? 1 : 0;
-        Debug.Log("AnimationManager HitterSwing() = " + animationEvent.intParameter);
+        hitters[0].SendMessage("Swing");
 
-        hitters[0].SendMessage("Swing", animationEvent);
 
-        if(isHitted)
-        {
-            TryCatch();
-        }
     }
 
     public void TryCatch()
     {
+        if (!isHitted) return;
+
         int lastIndex = BaseballControll.instance.hitterPaths.Length - 1;
         Transform destTr = BaseballControll.instance.hitterPaths[lastIndex].transform;
 

@@ -73,7 +73,7 @@ public class BaseballControll : MonoBehaviour {
                                               "oncomplete", "BallDropped"));
     }
 
-    public void Pitched(AnimationEvent animationEvent)
+    public void Pitched(bool isHitted)
     {
         //Debug.Log("pitched");
 
@@ -81,7 +81,6 @@ public class BaseballControll : MonoBehaviour {
         gameObject.transform.position = catcherPaths[0].position;
         renderer.enabled = true;
 
-        bool isHitted = animationEvent.intParameter == 1;
         Debug.Log(isHitted ? "hitterPaths" : "catcherPaths");
 
        
@@ -91,6 +90,7 @@ public class BaseballControll : MonoBehaviour {
 
         if(isHitted)
         {
+            // 중간경로 계산 
             hitterPaths[hitterPaths.Length - 2].position = (hitterPaths[hitterPaths.Length - 1].position + hitterPaths[hitterPaths.Length - 3].position) * 0.5f + Vector3.up * midPosHeight;
 
             iTween.MoveTo(gameObject, iTween.Hash("path", hitterPaths,

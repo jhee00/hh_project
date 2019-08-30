@@ -1,13 +1,18 @@
 ﻿<Properties StartupConfiguration="{A5053ABA-4EBC-4426-CF65-6D87E6C3070C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CameraWork.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/TimelineEvents/Scripts/TimelineEvents/TimelineEventTrack.cs">
     <Files>
       <File FileName="Assets/BaseballControll.cs" Line="39" Column="90" />
-      <File FileName="Assets/AnimationManager.cs" Line="138" Column="21" />
-      <File FileName="Assets/PitcherControll.cs" Line="20" Column="5" />
-      <File FileName="Assets/HitterControll.cs" Line="33" Column="6" />
+      <File FileName="Assets/AnimationManager.cs" Line="89" Column="5" />
+      <File FileName="Assets/PitcherControll.cs" Line="34" Column="40" />
+      <File FileName="Assets/HitterControll.cs" Line="28" Column="5" />
       <File FileName="Assets/DefenderControll.cs" Line="40" Column="5" />
       <File FileName="Assets/Plugins/Pixelplacement/iTween/Sample/MoveSample.cs" Line="13" Column="129" />
       <File FileName="Assets/CameraWork.cs" Line="13" Column="18" />
+      <File FileName="Assets/TimelineEvents/Scripts/TimelineEvents/TimelineEventClip.cs" Line="25" Column="10" />
+      <File FileName="Assets/TimelineEvents/Scripts/TimelineEvents/EventInvocationInfo.cs" Line="62" Column="44" />
+      <File FileName="Assets/TimelineEvents/Scripts/TimelineEvents/TimelineEventBehaviour.cs" Line="23" Column="9" />
+      <File FileName="Assets/TimelineEvents/Scripts/TimelineEvents/TimelineEventMixerBehaviour.cs" Line="10" Column="2" />
+      <File FileName="Assets/TimelineEvents/Scripts/TimelineEvents/TimelineEventTrack.cs" Line="27" Column="18" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

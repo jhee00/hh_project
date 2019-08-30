@@ -17,7 +17,7 @@ public class HitterControll : MonoBehaviour {
 		
 	}
 
-    public void Swing(AnimationEvent animationEvent)
+    public void Act(bool isHitted)
     {
         //Debug.Log("Swing");
         //Debug.Log("HitterControll Swing() = " + animationEvent.intParameter);
@@ -26,7 +26,12 @@ public class HitterControll : MonoBehaviour {
 
         // isHit == true -> BaseRun Ani 
 
-        if(animationEvent.intParameter == 1) BaseRun();
+        if(isHitted) BaseRun();
+    }
+
+    public void Swing()
+    {
+        aniCtrl.SetTrigger("swingTrigger");
     }
 
     public void BaseRun()
